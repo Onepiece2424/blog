@@ -9,9 +9,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route
-          exact
-          path="/posts">
+        <Route exact path="/posts">
           <Posts />
         </Route>
       </Switch>
