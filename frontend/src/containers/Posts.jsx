@@ -14,7 +14,7 @@ export const Posts = () => {
 
   return (
     <>
-      Post一覧
+      <p>Post一覧</p>
     </>
   )
 }
