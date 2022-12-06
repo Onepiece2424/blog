@@ -1,5 +1,8 @@
 import React, { useEffect,useReducer } from 'react';
 
+// component
+import Api from './Api'
+
 // apis
 import { fetchPosts } from '../apis/posts';
 
@@ -42,6 +45,7 @@ export const Posts = () => {
   return (
     <>
       <p>Post一覧</p>
+      <Api />
     </>
   )
 }
