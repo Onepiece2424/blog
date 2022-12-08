@@ -15,11 +15,8 @@ const Contact = () => {
   const [sendButtonLabel, setSendButtonLabel] = useState('送信する');
   const history = useHistory();
 
-  // ↓ 追加 ここから ↓
   const [token, setToken] = useState('');
-
   const { executeRecaptcha } = useGoogleReCaptcha();
-  // ↑ 追加 ここまで ↑
 
   useEffect(() => {
     name && email && message ? setIsSubmitDisable(false) : setIsSubmitDisable(true);
@@ -63,7 +60,6 @@ const Contact = () => {
     })
   }
   return (
-    // <Layout>
       <Container>
         <Form onSubmit={handleSubmit} className="my-3">
           <Form.Group>
@@ -90,7 +86,6 @@ const Contact = () => {
           </Form.Group>
         </Form>
       </Container>
-    // </Layout>
   )
 }
 export default Contact;
