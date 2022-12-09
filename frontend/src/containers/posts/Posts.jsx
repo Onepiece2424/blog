@@ -2,18 +2,18 @@ import React, { useEffect,useReducer } from 'react';
 
 // component
 // import Api from './Api'
-// import Contact from './Contact'
+import Contact from '../contact/Contact'
 import Posting from './Posting';
 
 // apis
-import { fetchPosts } from '../apis/posts';
+import { fetchPosts } from '../../apis/posts';
 
 // reducers
 import {
   initialState,
   postsActionTyps,
   postsReducer,
-} from '../reducers/posts';
+} from '../../reducers/posts';
 
 export const Posts = () => {
 
@@ -48,7 +48,7 @@ export const Posts = () => {
     <>
       <p>Post一覧</p>
       <Posting />
-      {/* <Contact /> */}
+      <Contact />
     </>
   )
 }
