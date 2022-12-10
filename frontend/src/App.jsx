@@ -1,23 +1,15 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router,Switch,Route } from "react-router-dom";
 
 // components
-import { Posts } from './containers/posts/Posts.jsx';
 import Reference from './containers/Reference';
+import Edamam from './containers/api/Edamam'
 
 function App() {
   return (
     <>
-      <Router>
-        <Switch>
-          <Route exact path="/posts">
-            <Posts />
-          </Route>
-        </Switch>
-      </Router>
-      <br></br>
       <Reference />
+      <Edamam />
     </>
   );
 }
