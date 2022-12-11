@@ -3,14 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <GoogleReCaptchaProvider reCaptchaKey={process.env.REACT_APP_S_KEY} language="ja">
-      <App />
-    </GoogleReCaptchaProvider>
+    <App />
   </React.StrictMode>
 );
 
