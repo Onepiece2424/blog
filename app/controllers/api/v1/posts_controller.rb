@@ -38,8 +38,11 @@ module Api
         params
         token = params[:token]
         recaptcha_action = params[:action]
+        name = params[:name]
+        email = params[:email]
+        message = params[:message]
         verify_recaptcha?(token, recaptcha_action)
-        return
+        binding.pry
       end
 
       private
