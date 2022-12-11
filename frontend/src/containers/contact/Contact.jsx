@@ -28,6 +28,7 @@ const Contact = () => {
       token: token
     })
     .then(res => {
+      console.log(res)
       if(res.status === 204){
         console.log('204');
       } else if(res.status === 500){
