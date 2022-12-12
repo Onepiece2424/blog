@@ -5,6 +5,7 @@ import './App.css';
 // import Reference from './containers/Reference';
 import Contact from './containers/contact/Contact';
 // import Edamam from './containers/api/Edamam'
+import HomeTown from './containers/home/HomeTown'
 
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
@@ -15,6 +16,9 @@ function App() {
     <GoogleReCaptchaProvider reCaptchaKey={REACT_APP_S} language="ja">
       <Contact />
       {/* <Edamam /> */}
+      <br></br>
+      <br></br>
+      <HomeTown />
     </GoogleReCaptchaProvider>
   );
 }
