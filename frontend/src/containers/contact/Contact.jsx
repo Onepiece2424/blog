@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react';
 import { Container, Button, Form } from 'react-bootstrap';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'; // 追加
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 const Contact = () => {
 
