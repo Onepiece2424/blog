@@ -7,6 +7,7 @@ import Contact from './containers/contact/Contact';
 // import Edamam from './containers/api/Edamam'
 import HomeTown from './containers/home/HomeTown'
 import Count from './containers/Count'
+import MainForm from './containers/form/MainForm';
 
 
 
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <GoogleReCaptchaProvider reCaptchaKey={REACT_APP_S} language="ja">
+      <MainForm />
       <Count />
       <Contact />
       <br></br>

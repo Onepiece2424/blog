@@ -1,4 +1,6 @@
 import { createStore, combineReducers } from "redux";
+import { reducer as reduxFormReducer } from 'redux-form';
+
 
 const countReducer = (
   state = {
@@ -25,6 +27,7 @@ const postsReducer = (
 const rootReducer = combineReducers({
   countReducer,
   postsReducer,
+  form: reduxFormReducer,
 });
 
 const store = createStore(rootReducer);
