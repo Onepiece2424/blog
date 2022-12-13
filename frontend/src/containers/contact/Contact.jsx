@@ -1,5 +1,5 @@
-import axios from 'axios'
-import { useState } from 'react';
+// import axios from 'axios'
+import { useState,useCallback,useEffect } from 'react';
 import { Container, Button, Form } from 'react-bootstrap';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
@@ -9,36 +9,54 @@ const Contact = () => {
   const [name,setName] = useState('');
   const [email,setEmail] = useState('');
 
-  const [token, setToken] = useState('');
+  // const [token, setToken] = useState('');
   const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleSubmit = (e) =>{
     e.preventDefault();
   }
 
-  const postContact = async() => {
+  // const postContact = useCallback(async() => {
 
-    const reCaptchaToken = await executeRecaptcha('call_api');
-    setToken(reCaptchaToken);
-    console.log(token)
-    await axios.post('http://localhost:3000/api/v1/posts/call_api.json',{
-      name: name,
-      email: email,
-      message: message,
-      token: token
-    })
-    .then(res => {
-      console.log(res)
-      if(res.status === 204){
-        console.log('204');
-      } else if(res.status === 500){
-        console.log('500');
-      }
-    })
-    .catch(error => {
-      console.log(error);
-    })
-  }
+  //   const reCaptchaToken = await executeRecaptcha('call_api');
+  //   setToken(reCaptchaToken);
+  //   console.log(token)
+  //   await axios.post('http://localhost:3000/api/v1/posts/call_api.json',{
+  //     name: name,
+  //     email: email,
+  //     message: message,
+  //     token: token
+  //   })
+  //   .then(res => {
+  //     console.log(res)
+  //     if(res.status === 204){
+  //       console.log('204');
+  //     } else if(res.status === 500){
+  //       console.log('500');
+  //     }
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //   })
+  // },[executeRecaptcha])
+
+  // useEffect(() => {
+  //   postContact();
+  // }, [postContact]);
+
+  const handleReCaptchaVerify = useCallback(async () => {
+    if (!executeRecaptcha) {
+      console.log('Execute recaptcha not yet available');
+      return;
+    }
+
+    const recaotchaToken = await executeRecaptcha('yourAction');
+    console.log(recaotchaToken)
+  }, [executeRecaptcha]);
+
+  useEffect(() => {
+    handleReCaptchaVerify();
+  }, [handleReCaptchaVerify]);
 
   return (
       <Container>
@@ -69,7 +87,7 @@ const Contact = () => {
           </div>
           <br></br>
           <Form.Group className="mb-3 text-end">
-            <Button variant="dark" type="submit" onClick={postContact}>送信する</Button>
+            <Button variant="dark" type="submit" onClick={handleReCaptchaVerify}>送信する</Button>
           </Form.Group>
         </Form>
       </Container>
