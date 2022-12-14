@@ -1,21 +1,39 @@
-import React, {useRef} from 'react'
+import { useState, useRef,useCallback,useEffect } from 'react';
 import { Field } from 'redux-form'
+
+// v3
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 const TokenForm = () => {
 
-  const inputElement = useRef(null)
-  const handleClick = () => {
-   inputElement.current.focus();
-    console.log("inputEl.current:", inputElement.current);
-  };
-  console.log(inputElement.current)
+  const [token,setToken] = useState('')
+
+  const elm = useRef(null)
+  console.log(elm.current)
+
+  // recaptchav3 token生成
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const handleReCaptchaVerify = useCallback(async () => {
+    if (!executeRecaptcha) {
+      console.log('Execute recaptcha not yet available');
+      return;
+    }
+
+    const recaotchaToken = await executeRecaptcha('yourAction');
+    console.log(recaotchaToken)
+
+    setToken(recaotchaToken)
+
+  }, [executeRecaptcha]);
+
+  useEffect(() => {
+    handleReCaptchaVerify();
+  }, [handleReCaptchaVerify]);
 
   return (
     <>
-      <Field name="length" component="input" />
+      <Field name="length" component="input" type="hidden" ref={elm} value={token} />
       <br></br>
-      <input ref={inputElement} type="text" />
-      <button onClick={handleClick}>入力エリアをフォーカスする</button>
     </>
   )
 }
