@@ -9,6 +9,7 @@ const TokenForm = () => {
   return (
     <>
       <Field name="length" component="input" />
+      <br></br>
       <input ref={inputElement} type="text" />
     </>
   )
