@@ -1,13 +1,10 @@
 import React from 'react'
 
-const TokenForm = (field) => {
-
-  const { meta: { touched, error } } = field;
-  console.log(field)
+const TokenForm = () => {
 
   return (
     <>
-      <p className="text-danger">{ touched ? error : '' }</p>
+      <p>こんにちは。</p>
     </>
   )
 }
