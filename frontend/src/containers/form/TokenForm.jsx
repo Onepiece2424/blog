@@ -1,10 +1,11 @@
 import React from 'react'
+import { Field } from 'redux-form'
 
 const TokenForm = () => {
 
   return (
     <>
-      <p>こんにちは。</p>
+      <Field name="length" component="input"/>
     </>
   )
 }
