@@ -5,9 +5,9 @@ import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 // import Contact from './containers/contact/Contact';
 // import Edamam from './containers/api/Edamam'
 import HomeTown from './containers/home/HomeTown'
-import Count from './containers/Count'
+// import Count from './containers/Count'
 import MainForm from './containers/form/MainForm';
-import Counter from './containers/count/Counter';
+import Pointer from './containers/point/Pointer';
 
 
 
@@ -16,9 +16,9 @@ function App() {
 
   return (
     <GoogleReCaptchaProvider reCaptchaKey={REACT_APP_S} language="ja">
-      <Counter />
+      <Pointer />
       <MainForm />
-      <Count />
+      {/* <Count /> */}
       {/* <Contact /> */}
       <br></br>
       <br></br>
