@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 // components
 // import Reference from './containers/Reference';
