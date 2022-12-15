@@ -1,4 +1,4 @@
-import React,{ useState, useRef,useCallback,useEffect } from 'react';
+import React,{ useRef,useCallback,useEffect } from 'react';
 import { Field } from 'redux-form';
 import TokenForm from './TokenForm';
 
@@ -6,9 +6,6 @@ import TokenForm from './TokenForm';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 const SubForm = () => {
-
-
-  const [token,setToken] = useState('')
 
   const elm = useRef(null)
   console.log(elm.current)
@@ -24,7 +21,7 @@ const SubForm = () => {
     const recaotchaToken = await executeRecaptcha('yourAction');
     console.log(recaotchaToken)
 
-    setToken(recaotchaToken)
+    elm.current = recaotchaToken
 
   }, [executeRecaptcha]);
 
@@ -38,7 +35,7 @@ const SubForm = () => {
     <div>
       <Field name="age" component="input" />
       <br></br>
-      <Field name="job" component="input" value={token} ref={elm} />
+      <Field name="job" component="input" value={elm} />
       <br></br>
       <TokenForm />
     </div>

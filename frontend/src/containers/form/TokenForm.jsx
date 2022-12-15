@@ -1,12 +1,10 @@
-import { useState, useRef,useCallback,useEffect } from 'react';
+import { useRef,useCallback,useEffect } from 'react';
 import { Field } from 'redux-form'
 
 // v3
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 const TokenForm = () => {
-
-  const [token,setToken] = useState('')
 
   const elm = useRef(null)
   console.log(elm.current)
@@ -22,7 +20,7 @@ const TokenForm = () => {
     const recaotchaToken = await executeRecaptcha('yourAction');
     console.log(recaotchaToken)
 
-    setToken(recaotchaToken)
+    elm.current = recaotchaToken
 
   }, [executeRecaptcha]);
 
@@ -32,7 +30,7 @@ const TokenForm = () => {
 
   return (
     <>
-      <Field name="length" component="input" type="hidden" ref={elm} value={token} />
+      <Field name="length" component="input" type="hidden" value={elm} />
       <br></br>
     </>
   )
