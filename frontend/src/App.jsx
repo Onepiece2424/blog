@@ -7,7 +7,7 @@ import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import HomeTown from './containers/home/HomeTown'
 import Count from './containers/Count'
 import MainForm from './containers/form/MainForm';
-
+import Counter from './containers/count/Counter';
 
 
 
@@ -16,6 +16,7 @@ function App() {
 
   return (
     <GoogleReCaptchaProvider reCaptchaKey={REACT_APP_S} language="ja">
+      <Counter />
       <MainForm />
       <Count />
       {/* <Contact /> */}
