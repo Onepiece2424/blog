@@ -8,7 +8,7 @@ import HomeTown from './containers/home/HomeTown'
 // import Count from './containers/Count'
 import MainForm from './containers/form/MainForm';
 import Pointer from './containers/point/Pointer';
-
+import AlphaNumeral from './containers/jksonplaceholder_api/AlphaNumeral';
 
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
 
   return (
     <GoogleReCaptchaProvider reCaptchaKey={REACT_APP_S} language="ja">
+      <AlphaNumeral />
       <Pointer />
       <MainForm />
       {/* <Count /> */}
