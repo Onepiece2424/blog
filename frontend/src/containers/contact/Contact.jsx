@@ -12,9 +12,7 @@ const Contact = (props) => {
   const [name,setName] = useState('');
   const [email,setEmail] = useState('');
 
-
   const elm = useRef(null)
-  // const dispatch = useDispatch()
 
   // const handleSubmit = (e) =>{
   //   // e.preventDefault();
