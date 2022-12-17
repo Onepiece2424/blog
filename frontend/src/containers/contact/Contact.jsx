@@ -1,8 +1,9 @@
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, Fields } from 'redux-form';
 import { useState,useCallback,useEffect,useRef } from 'react';
 import { Container, Button, Form } from 'react-bootstrap';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import showResults from '../func/showResults';
+import renderFields from './renderFields';
 
 const Contact = (props) => {
 
@@ -88,13 +89,18 @@ const Contact = (props) => {
             <Field name="message" component="input" value={message} onChange={(e) => setMessage(e.target.value)} />
           </Form.Group>
           <br></br>
+          <Field name="recaptchatoken" component="input" type="hidden" value={elm} />
+          <Form.Label>名前（性）</Form.Label>
+          <Form.Label>名前（名）</Form.Label>
+          <Fields names={[ 'firstName', 'lastName' ]} component={renderFields}/>
+          <br></br>
+          <br></br>
           <div className="mb-3 text-muted">
             このサイトは reCAPTCHA によって保護されており、Google の
             <a href="https://policies.google.com/privacy">プライバシー ポリシー</a>と
             <a href="https://policies.google.com/terms">利用規約</a>が適用されます。
           </div>
           <br></br>
-          <Field name="recaptchatoken" component="input" type="hidden" value={elm} />
           <Form.Group className="mb-3 text-end">
             <Button variant="dark" type="submit" onClick={handleReCaptchaVerify}>送信する</Button>
           </Form.Group>
