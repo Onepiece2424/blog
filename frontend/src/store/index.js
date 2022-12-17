@@ -10,22 +10,6 @@ const countReducer = (
   return state;
 };
 
-// pointアップダウンするreduer
-const pointReducer = (state = {point: 1}, action) => {
-  switch (action.type) {
-    case 'INCREASE_POINT':
-      return {
-        point: state.point + 1,
-      };
-    case 'DECREASE_POINT':
-      return {
-        point: state.point - 1,
-      };
-    default:
-      return state;
-  }
-};
-
 const postsReducer = (
   state = {
     posts: [
@@ -40,28 +24,10 @@ const postsReducer = (
   return state;
 };
 
-const initialState = {
-  alphanumerals: []
-}
-
-const alphaNumeralReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'GET_DATA':
-    return {
-      ...state,
-      alphanumerals: action.payload
-    };
-    default:
-      return state;
-  }
-};
-
 
 const rootReducer = combineReducers({
   countReducer,
-  pointReducer,
   postsReducer,
-  alphaNumeralReducer,
   form: reduxFormReducer,
 });
 
