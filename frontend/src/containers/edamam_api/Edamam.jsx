@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 
 // components
-import Recipe from '../Recipe'
+import Recipe from './Recipe'
 
 const Edamam = () => {
 
