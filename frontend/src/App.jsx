@@ -1,5 +1,6 @@
 import React from 'react';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+
 // components
 import Reference from './containers/Reference';
 import Contact from './containers/contact/Contact';
@@ -16,16 +17,16 @@ function App() {
 
   return (
     <GoogleReCaptchaProvider reCaptchaKey={REACT_APP_S} language="ja">
-      <AlphaNumeral />
+      <Contact />
       <Pointer />
       <MainForm />
       <Count />
-      <Contact />
-      <br></br>
-      <br></br>
       <HomeTown />
       <Reference />
+      <br></br>
+      <br></br>
       <Edamam />
+      <AlphaNumeral />
     </GoogleReCaptchaProvider>
   );
 }

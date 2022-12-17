@@ -46,7 +46,6 @@ const Contact = () => {
 
   const handleReCaptchaVerify = useCallback(async () => {
     if (!executeRecaptcha) {
-      console.log('Execute recaptcha not yet available');
       return;
     }
 

@@ -5,7 +5,6 @@ const Reference = () => {
   // useRefを使用し、特定の値を保持
   const [count, setCount] = useState(0);
   const prevCountRef = useRef();
-  console.log(prevCountRef)
 
   useEffect(() => {
     prevCountRef.current = count;
