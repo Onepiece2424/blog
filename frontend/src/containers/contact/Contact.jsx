@@ -54,7 +54,7 @@ const Contact = (props) => {
     const recaotchaToken = await executeRecaptcha('yourAction');
 
     // Field component valueの確認
-    console.log(elm.current)
+    // console.log(elm.current)
 
     // hiddenしたField valueへリキャプチャトークンを代入
     /* eslint-disable */
