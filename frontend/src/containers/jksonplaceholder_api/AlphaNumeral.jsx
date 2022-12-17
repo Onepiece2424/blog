@@ -19,6 +19,17 @@ const AlphaNumeral = () => {
     getAlphaNumerals();
   }, [])
 
+  useEffect(() => {
+    const fetchQiitaItems = async () => {
+    const response = await fetch(
+      "https://qiita.com/api/v2/users/ryosuketter/items"
+    );
+    const json = await response.json();
+    console.log(json);
+    };
+    fetchQiitaItems();
+  }, [])
+
   return (
     <ul>
       {state.alphanumerals.map((alphanumeral) => (
