@@ -1,9 +1,12 @@
-// import axios from 'axios'
+import { Field, reduxForm } from 'redux-form';
 import { useState,useCallback,useEffect } from 'react';
 import { Container, Button, Form } from 'react-bootstrap';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import showResults from '../func/showResults';
 
-const Contact = () => {
+const Contact = (props) => {
+
+  const { handleSubmit } = props
 
   const [message,setMessage] = useState('');
   const [name,setName] = useState('');
@@ -12,9 +15,9 @@ const Contact = () => {
   // const [token, setToken] = useState('');
   const { executeRecaptcha } = useGoogleReCaptcha();
 
-  const handleSubmit = (e) =>{
-    e.preventDefault();
-  }
+  // const handleSubmit = (e) =>{
+  //   // e.preventDefault();
+  // }
 
   // const postContact = useCallback(async() => {
 
@@ -59,24 +62,24 @@ const Contact = () => {
 
   return (
       <Container>
-        <Form onSubmit={handleSubmit} className="my-3">
+        <Form onSubmit={handleSubmit(showResults)} className="my-3">
           <Form.Group>
             <br></br>
             <Form.Label>お名前</Form.Label>
             <br></br>
-            <Form.Control value={name} onChange={(e) => setName(e.target.value)} />
+            <Field name="name" component="input" value={name} onChange={(e) => setName(e.target.value)} />
           </Form.Group>
           <Form.Group>
             <br></br>
             <Form.Label>メールアドレス</Form.Label>
             <br></br>
-            <Form.Control value={email} onChange={(e) => setEmail(e.target.value)} />
+            <Field name="email" component="input" value={email} onChange={(e) => setEmail(e.target.value)} />
           </Form.Group>
           <br></br>
           <Form.Group className="mb-3" controlId="formBiography">
             <Form.Label>お問い合わせフォーム</Form.Label>
             <br></br>
-            <Form.Control as="textarea" value={message} onChange={(e) => setMessage(e.target.value)} style={{ height: '100px' }} />
+            <Field name="message" component="input" value={message} onChange={(e) => setMessage(e.target.value)} />
           </Form.Group>
           <br></br>
           <div className="mb-3 text-muted">
@@ -92,4 +95,7 @@ const Contact = () => {
       </Container>
   )
 }
-export default Contact;
+
+export default reduxForm({
+  form: 'ContactForm',
+})(Contact);
