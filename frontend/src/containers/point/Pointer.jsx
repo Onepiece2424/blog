@@ -1,11 +1,9 @@
-import React from 'react'
-import { useSelector,useDispatch } from "react-redux";
+import React,{useReducer} from 'react'
+import {initialState, pointReducer} from '../../reducers/pointers/pointers'
 
 const Pointer = () => {
 
-  const point = useSelector((state) => state.pointReducer.point);
-
-  const dispatch = useDispatch();
+  const [state, dispatch] = useReducer(pointReducer, initialState);
 
   // actionをdispatchする
   const increase = () => {
@@ -19,7 +17,7 @@ const Pointer = () => {
   return (
     <>
       <h3>Pointアップダウン</h3>
-      <p>Point: {point}</p>
+      <p>Point: {state.point}</p>
       <button onClick={increase}>Up</button>
       <button onClick={decrease}>Down</button>
       <br></br>
