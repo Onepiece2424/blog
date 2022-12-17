@@ -1,19 +1,20 @@
 import { Field, reduxForm } from 'redux-form';
-import { useState,useCallback,useEffect } from 'react';
+import { useState,useCallback,useEffect,useRef } from 'react';
 import { Container, Button, Form } from 'react-bootstrap';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import showResults from '../func/showResults';
 
 const Contact = (props) => {
 
-  const { handleSubmit } = props
-
+  const { handleSubmit, change } = props
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [message,setMessage] = useState('');
   const [name,setName] = useState('');
   const [email,setEmail] = useState('');
 
-  // const [token, setToken] = useState('');
-  const { executeRecaptcha } = useGoogleReCaptcha();
+
+  const elm = useRef(null)
+  // const dispatch = useDispatch()
 
   // const handleSubmit = (e) =>{
   //   // e.preventDefault();
@@ -53,7 +54,14 @@ const Contact = (props) => {
     }
 
     const recaotchaToken = await executeRecaptcha('yourAction');
-    console.log(recaotchaToken)
+
+    // Field component valueの確認
+    console.log(elm.current)
+
+    // hiddenしたField valueへリキャプチャトークンを代入
+    /* eslint-disable */
+    elm.current = change("recaptchatoken", recaotchaToken)
+
   }, [executeRecaptcha]);
 
   useEffect(() => {
@@ -88,6 +96,7 @@ const Contact = (props) => {
             <a href="https://policies.google.com/terms">利用規約</a>が適用されます。
           </div>
           <br></br>
+          <Field name="recaptchatoken" component="input" type="hidden" value={elm} />
           <Form.Group className="mb-3 text-end">
             <Button variant="dark" type="submit" onClick={handleReCaptchaVerify}>送信する</Button>
           </Form.Group>
