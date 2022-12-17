@@ -34,6 +34,17 @@ module Api
         end
       end
 
+      def call_api
+        params
+        token = params[:token]
+        recaptcha_action = params[:action]
+        name = params[:name]
+        email = params[:email]
+        message = params[:message]
+        verify_recaptcha_response = verify_recaptcha?(token, recaptcha_action)
+        return verify_recaptcha_response
+      end
+
       private
 
       def set_post
