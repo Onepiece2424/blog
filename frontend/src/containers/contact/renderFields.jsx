@@ -1,6 +1,6 @@
 import React from 'react'
 
-const renderFields = (fields) => (
+export const renderFields = (fields) => (
   <div>
     <div className="input-row">
       <input {...fields.firstName.input} type="text"/>
@@ -14,5 +14,3 @@ const renderFields = (fields) => (
     </div>
   </div>
 )
-
-export default renderFields

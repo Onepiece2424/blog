@@ -3,7 +3,7 @@ import { useState,useCallback,useEffect,useRef } from 'react';
 import { Container, Button, Form } from 'react-bootstrap';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import showResults from '../func/showResults';
-import renderFields from './renderFields';
+import {renderFields} from './renderFields';
 
 const Contact = (props) => {
 
