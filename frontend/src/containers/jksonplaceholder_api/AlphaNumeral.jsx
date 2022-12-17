@@ -1,11 +1,10 @@
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useEffect,useReducer } from 'react'
+import {initialState, alphaNumeralReducer} from '../../reducers/data_api/data_api'
+
 
 const AlphaNumeral = () => {
 
-  const dispatch = useDispatch();
-
-  const alphanumerals = useSelector((state) => state.alphaNumeralReducer.alphanumerals)
+  const [state, dispatch] = useReducer(alphaNumeralReducer, initialState);
 
   useEffect(() => {
     const getAlphaNumerals = async () => {
@@ -18,11 +17,11 @@ const AlphaNumeral = () => {
       })
     }
     getAlphaNumerals();
-  }, [dispatch])
+  }, [])
 
   return (
     <ul>
-      {alphanumerals.map((alphanumeral) => (
+      {state.alphanumerals.map((alphanumeral) => (
         <li key={alphanumeral.id}>{alphanumeral.title}</li>
       ))}
     </ul>

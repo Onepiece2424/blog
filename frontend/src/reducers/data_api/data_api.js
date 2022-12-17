@@ -1,10 +1,10 @@
-import { createStore } from 'redux'
+// import { createStore } from 'redux'
 
-const initialState = {
+export const initialState = {
   alphanumerals: []
 }
 
-const alphaNumeralReducer = (state = initialState, action) => {
+export const alphaNumeralReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'GET_DATA':
     return {
@@ -16,6 +16,6 @@ const alphaNumeralReducer = (state = initialState, action) => {
   }
 };
 
-const store = createStore(alphaNumeralReducer);
+// const store = createStore(alphaNumeralReducer);
 
-export default store;
+// export default store;
