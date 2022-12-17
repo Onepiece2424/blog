@@ -20,34 +20,6 @@ const Contact = (props) => {
     e.preventDefault();
   }
 
-  // const postContact = useCallback(async() => {
-
-  //   const reCaptchaToken = await executeRecaptcha('call_api');
-  //   setToken(reCaptchaToken);
-  //   console.log(token)
-  //   await axios.post('http://localhost:3000/api/v1/posts/call_api.json',{
-  //     name: name,
-  //     email: email,
-  //     message: message,
-  //     token: token
-  //   })
-  //   .then(res => {
-  //     console.log(res)
-  //     if(res.status === 204){
-  //       console.log('204');
-  //     } else if(res.status === 500){
-  //       console.log('500');
-  //     }
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //   })
-  // },[executeRecaptcha])
-
-  // useEffect(() => {
-  //   postContact();
-  // }, [postContact]);
-
   const handleReCaptchaVerify = useCallback(async () => {
     if (!executeRecaptcha) {
       return;
