@@ -2,12 +2,13 @@ import { Field, reduxForm, Fields } from 'redux-form';
 import { useState,useCallback,useEffect,useRef } from 'react';
 import { Container, Button, Form } from 'react-bootstrap';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import showResults from '../func/showResults';
+// import showResults from '../func/showResults';
 import {renderFields} from './renderFields';
+import axios from 'axios'
 
 const Contact = (props) => {
 
-  const { handleSubmit, change } = props
+  const { change } = props
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [message,setMessage] = useState('');
   const [name,setName] = useState('');
@@ -15,9 +16,9 @@ const Contact = (props) => {
 
   const elm = useRef(null)
 
-  // const handleSubmit = (e) =>{
-  //   // e.preventDefault();
-  // }
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+  }
 
   // const postContact = useCallback(async() => {
 
@@ -52,7 +53,7 @@ const Contact = (props) => {
       return;
     }
 
-    const recaotchaToken = await executeRecaptcha('yourAction');
+    const recaotchaToken = await executeRecaptcha('call_api');
 
     // Field component valueの確認
     // console.log(elm.current)
@@ -60,6 +61,24 @@ const Contact = (props) => {
     // hiddenしたField valueへリキャプチャトークンを代入
     /* eslint-disable */
     elm.current = change("recaptchatoken", recaotchaToken)
+
+    await axios.post('http://localhost:3000/api/v1/posts/call_api.json',{
+      name: name,
+      email: email,
+      message: message,
+      token: recaotchaToken
+    })
+    .then(res => {
+      console.log(res)
+      if(res.status === 204){
+        console.log('204');
+      } else if(res.status === 500){
+        console.log('500');
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    })
 
   }, [executeRecaptcha]);
 
@@ -69,7 +88,7 @@ const Contact = (props) => {
 
   return (
       <Container>
-        <Form onSubmit={handleSubmit(showResults)} className="my-3">
+        <Form onSubmit={handleSubmit} className="my-3">
           <Form.Group>
             <br></br>
             <Form.Label>お名前</Form.Label>
