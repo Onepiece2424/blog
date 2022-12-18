@@ -3,9 +3,11 @@ import { reduxForm } from 'redux-form';
 import axios from 'axios'
 import ItemsContainer from './ItemsContainer'
 import FormContainer from './FormContainer'
+import showResults from '../func/showResults';
 
-const MainContainer = () => {
+const MainContainer = (props) => {
 
+  console.log(props)
   const [items,setItems] = useState([])
 
   useEffect(() => {
@@ -22,7 +24,7 @@ const MainContainer = () => {
   return (
     <div>
       <ItemsContainer itemdata={items} />
-      <FormContainer />
+      <FormContainer onSubmit={showResults} />
     </div>
   )
 }
