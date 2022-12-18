@@ -60,30 +60,45 @@ const Contact = (props) => {
 
   return (
       <Container>
+        <h3>お問い合わせ</h3>
         <Form onSubmit={handleSubmit} className="my-3">
           <Form.Group>
             <br></br>
-            <Form.Label>お名前</Form.Label>
+            <Form.Label>ニックネーム</Form.Label>
             <br></br>
-            <Field name="name" component="input" value={name} onChange={(e) => setName(e.target.value)} />
+            <Field
+             name="name"
+             component="input"
+             value={name}
+             onChange={(e) => setName(e.target.value)}
+             placeholder="nickname"
+             />
           </Form.Group>
+          <br></br>
+          <Field name="recaptchatoken" component="input" type="hidden" value={elm} />
+          <Form.Label>名前（性）</Form.Label>
+          <Form.Label>名前（名）</Form.Label>
+          <Fields names={[ 'firstName', 'lastName' ]} component={renderFields} />
+          <br></br>
           <Form.Group>
             <br></br>
             <Form.Label>メールアドレス</Form.Label>
             <br></br>
-            <Field name="email" component="input" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <Field
+              name="email"
+              component="input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="email"
+            />
           </Form.Group>
+          <br></br>
           <br></br>
           <Form.Group className="mb-3" controlId="formBiography">
             <Form.Label>お問い合わせフォーム</Form.Label>
             <br></br>
             <Field name="message" component="input" value={message} onChange={(e) => setMessage(e.target.value)} />
           </Form.Group>
-          <br></br>
-          <Field name="recaptchatoken" component="input" type="hidden" value={elm} />
-          <Form.Label>名前（性）</Form.Label>
-          <Form.Label>名前（名）</Form.Label>
-          <Fields names={[ 'firstName', 'lastName' ]} component={renderFields}/>
           <br></br>
           <br></br>
           <div className="mb-3 text-muted">
