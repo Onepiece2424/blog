@@ -10,13 +10,13 @@ import Count from './containers/count/Count'
 import MainForm from './containers/form/MainForm';
 import Pointer from './containers/point/Pointer';
 import AlphaNumeral from './containers/jksonplaceholder_api/AlphaNumeral';
-// import MainContainer from './containers/items/MainContainer';
+import MainContainer from './containers/items/MainContainer';
 
 function App() {
 
   return (
     <GoogleReCaptchaProvider reCaptchaKey={process.env.REACT_APP_S} language="ja">
-      {/* <MainContainer /> */}
+      <MainContainer />
       <Contact />
       <br></br>
       <br></br>
