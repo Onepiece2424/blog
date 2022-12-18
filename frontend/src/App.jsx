@@ -12,10 +12,9 @@ import Pointer from './containers/point/Pointer';
 import AlphaNumeral from './containers/jksonplaceholder_api/AlphaNumeral';
 
 function App() {
-  const REACT_APP_S = "6LeHHG4jAAAAAKLzo5sZo5PbUJsXPIyHBC7G0yw5"
 
   return (
-    <GoogleReCaptchaProvider reCaptchaKey={REACT_APP_S} language="ja">
+    <GoogleReCaptchaProvider reCaptchaKey={process.env.REACT_APP_S} language="ja">
       <Contact />
       <Pointer />
       <MainForm />
