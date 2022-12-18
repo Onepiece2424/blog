@@ -21,7 +21,7 @@ const MainContainer = () => {
   return (
     <div>
       <ItemsContainer itemdata={items} />
-      <FormContainer />
+      <FormContainer itemdata={items} />
     </div>
   )
 }
