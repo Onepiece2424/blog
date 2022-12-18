@@ -31,11 +31,12 @@ const FormContainer = () => {
   return (
     <>
       <form>
-        <input value={name} onChange={handleChange} />
+        <input value={name} onChange={handleChange} placeholder='商品名' />
         <br></br>
-        <input value={quantity} onChange={quantityChange} />
+        <input value={quantity} onChange={quantityChange} placeholder='数量' />
         <br></br>
-        <Button type="submit" onClick={createItem}>つぶやく</Button>
+        <br></br>
+        <Button type="submit" onClick={createItem}>商品登録</Button>
       </form>
     </>
   )
