@@ -7,11 +7,14 @@ const ItemsContainer = (props) => {
   return (
     <>
       <h3>登録した商品一覧</h3>
-      <ul>
+      <>
         {itemdata.map((item) =>
-          <li key={item.id}>{item.item_name}</li>
+          <div key={item.id}>
+            <div >商品：{item.item_name}</div>
+            <div>数量：{item.quantity}</div>
+          </div>
         )}
-      </ul>
+      </>
     </>
   )
 }

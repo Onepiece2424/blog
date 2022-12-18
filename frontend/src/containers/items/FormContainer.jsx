@@ -1,12 +1,10 @@
 import React,{useState} from 'react'
 import axios from 'axios'
-import { Field } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 
-const FormContainer = () => {
+const FormContainer = (props) => {
 
- const handleSubmit = (e) => {
-  e.preventDefault()
- }
+  const { handleSubmit } = props;
 
   const [name, setName] = useState('')
   const [quantity, setQuantity] = useState('')
@@ -35,6 +33,7 @@ const FormContainer = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <h3>商品登録フォーム</h3>
         <Field name='商品名' component='input' value={name} onChange={handleChange} placeholder='商品名' />
         <br></br>
         <Field name='数量' component='input' value={quantity} onChange={quantityChange} placeholder='数量' />
@@ -46,4 +45,6 @@ const FormContainer = () => {
   )
 }
 
-export default FormContainer
+export default reduxForm({
+  form: 'FormContainerForm',
+})(FormContainer);
