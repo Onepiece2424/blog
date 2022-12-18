@@ -23,8 +23,8 @@ const FormContainer = () => {
     .then((response) => {
       console.log(response);
     })
-    .catch((data) =>{
-      console.log(data)
+    .catch((error) =>{
+      console.log(error)
     })
   }
 
