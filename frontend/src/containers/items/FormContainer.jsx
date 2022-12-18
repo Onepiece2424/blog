@@ -1,13 +1,20 @@
-import React,{useState} from 'react'
+import { useState,useCallback,useEffect,useRef } from 'react';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import axios from 'axios'
 import { reduxForm, Field } from 'redux-form';
 
 const FormContainer = (props) => {
 
-  const { handleSubmit } = props;
+  const { change } = props;
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const elm = useRef(null)
 
   const [name, setName] = useState('')
   const [quantity, setQuantity] = useState('')
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+  }
 
   const handleChange = (e) => {
     setName(e.target.value)
@@ -17,10 +24,20 @@ const FormContainer = (props) => {
     setQuantity(e.target.value)
   }
 
-  const createItem = () => {
+  const createItem = useCallback(async() => {
+    if (!executeRecaptcha) {
+      return;
+    }
+
+    const recaotchaToken = await executeRecaptcha('create');
+
+    /* eslint-disable */
+    elm.current = change("recaptchatoken", recaotchaToken)
+
     axios.post('http://localhost:3000/items',
     { item_name: name,
-      quantity: quantity
+      quantity: quantity,
+      token: recaotchaToken
     })
     .then((response) => {
       console.log(response);
@@ -28,7 +45,11 @@ const FormContainer = (props) => {
     .catch((error) =>{
       console.log(error)
     })
-  }
+  }, [executeRecaptcha]);
+
+  useEffect(() => {
+    createItem();
+  }, [createItem]);
 
   return (
     <>
@@ -39,6 +60,7 @@ const FormContainer = (props) => {
         <Field name='数量' component='input' value={quantity} onChange={quantityChange} placeholder='数量' />
         <br></br>
         <br></br>
+        <Field name="recaptchatoken" component="input" type="hidden" value={elm} />
         <button type="submit" onClick={createItem}>商品登録</button>
       </form>
     </>

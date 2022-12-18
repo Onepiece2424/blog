@@ -5,6 +5,9 @@ class ItemsController < ApplicationController
   end
 
   def create
+    token = params[:token]
+    recaptcha_action = params[:action]
+    verify_recaptcha_response = verify_recaptcha?(token, recaptcha_action)
     @item = Item.create(item_params)
     render json: @item
   end
