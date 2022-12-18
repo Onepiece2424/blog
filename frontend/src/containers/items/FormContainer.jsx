@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import {Button} from 'react-bootstrap'
 import axios from 'axios'
+import { Field } from 'redux-form';
 
 const FormContainer = () => {
 
@@ -31,9 +32,9 @@ const FormContainer = () => {
   return (
     <>
       <form>
-        <input value={name} onChange={handleChange} placeholder='商品名' />
+        <Field name='商品名' component='input' value={name} onChange={handleChange} placeholder='商品名' />
         <br></br>
-        <input value={quantity} onChange={quantityChange} placeholder='数量' />
+        <Field name='数量' component='input' value={quantity} onChange={quantityChange} placeholder='数量' />
         <br></br>
         <br></br>
         <Button type="submit" onClick={createItem}>商品登録</Button>

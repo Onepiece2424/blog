@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { reduxForm } from 'redux-form';
 import axios from 'axios'
 import ItemsContainer from './ItemsContainer'
 import FormContainer from './FormContainer'
@@ -26,4 +27,6 @@ const MainContainer = () => {
   )
 }
 
-export default MainContainer
+export default reduxForm({
+  form: 'MainContainerForm',
+})(MainContainer);
