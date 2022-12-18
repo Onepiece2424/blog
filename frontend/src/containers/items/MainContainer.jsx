@@ -1,12 +1,17 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import ItemsContainer from './ItemsContainer'
+import FormContainer from './FormContainer'
 
 const MainContainer = () => {
+
+  const [items,setItems] = useState([])
 
   useEffect(() => {
     axios.get('http://localhost:3000/items')
     .then((results) => {
       console.log(results)
+      setItems(results.data)
     })
     .catch((data) =>{
       console.log(data)
@@ -15,7 +20,8 @@ const MainContainer = () => {
 
   return (
     <div>
-      メインです。
+      <ItemsContainer itemdata={items} />
+      <FormContainer />
     </div>
   )
 }
