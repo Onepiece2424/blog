@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios'
 import { reduxForm, Field } from 'redux-form';
-import showResults from '../func/showResults';
+// import showResults from '../func/showResults';
+import { dataTransfer } from '../func/dataTransfer';
 
 const FormContainer = (props) => {
 
@@ -34,7 +35,7 @@ const FormContainer = (props) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(showResults)}>
+      <form onSubmit={handleSubmit(dataTransfer)}>
         <h3>商品登録フォーム</h3>
         <Field name='商品名' component='input' value={name} onChange={handleChange} placeholder='商品名' />
         <br></br>
