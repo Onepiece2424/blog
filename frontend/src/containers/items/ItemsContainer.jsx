@@ -6,13 +6,14 @@ import { useSelector } from "react-redux";
 const ItemsContainer = (props) => {
 
   const {itemdata} = props
-  const item_name = useSelector((state) => initialState.item_name);
-  console.log(item_name)
+  const initial_item_name = useSelector((state) => initialState.item_name);
+  const initial_quantity = useSelector((state) => initialState.quantity);
+  console.log(initial_item_name, initial_quantity)
 
   return (
     <>
       <h3>登録した商品一覧</h3>
-      <>{item_name}</>
+      <>{initial_item_name}{initial_quantity}</>
       <>商品：{initialState.item_name}</>
       <br></br>
       <>数量：{initialState.quantity}</>
