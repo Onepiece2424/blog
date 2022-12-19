@@ -7,7 +7,7 @@ import showResults from '../func/showResults';
 
 const MainContainer = (props) => {
 
-  console.log(props)
+  // console.log(props)
   const [items,setItems] = useState([])
 
   useEffect(() => {
