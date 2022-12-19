@@ -42,7 +42,8 @@ module Api
         email = params[:email]
         message = params[:message]
         verify_recaptcha_response = verify_recaptcha?(token, recaptcha_action)
-        return verify_recaptcha_response
+        render json: verify_recaptcha_response
+        # return verify_recaptcha_response
       end
 
       private
