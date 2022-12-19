@@ -1,18 +1,16 @@
-import React,{useReducer} from 'react'
-import {initialState, addtodoReducer} from '../../reducers/addtodo/addtodo'
+import React from 'react'
+import {initialState} from '../../reducers/addtodo/addtodo'
 
 const ItemsContainer = (props) => {
 
   const {itemdata} = props
-  const [state, dispatch] = useReducer(addtodoReducer, initialState);
-  console.log(state)
 
   return (
     <>
       <h3>登録した商品一覧</h3>
-      <>商品：{state.item_name}</>
+      <>商品：{initialState.item_name}</>
       <br></br>
-      <>数量：{state.quantity}</>
+      <>数量：{initialState.quantity}</>
       <>
         {itemdata.map((item) =>
           <div key={item.id}>
