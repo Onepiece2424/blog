@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import {initialState} from '../../reducers/addtodo/addtodo'
 import { useSelector } from "react-redux";
 
@@ -9,6 +9,19 @@ const ItemsContainer = (props) => {
   const initial_item_name = useSelector((state) => initialState.item_name);
   const initial_quantity = useSelector((state) => initialState.quantity);
   console.log(initial_item_name, initial_quantity)
+
+  useEffect(() => {
+    console.log("1番目");
+    new Promise((resolve) => {
+      setTimeout(() => {
+        console.log("2番目(1秒後に実行)");
+        resolve();
+      }, 1000);
+    }).then(() => {
+      console.log("3番目");
+    });
+  },[])
+
 
   return (
     <>
