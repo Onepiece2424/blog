@@ -22,6 +22,16 @@ const ItemsContainer = (props) => {
     });
   },[])
 
+  // コールバック関数
+  const call = () => {
+    setTimeout(() => {
+      console.log("こんにちは")
+    }, 1000)
+  }
+  const callback = () => {
+    console.log("誰？？")
+  }
+  call(callback())
 
   return (
     <>
