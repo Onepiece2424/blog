@@ -1,6 +1,8 @@
 import React,{useEffect} from 'react'
 import {initialState} from '../../reducers/addtodo/addtodo'
 import { useSelector } from "react-redux";
+import { callback,call } from '../func/calback';
+import { test_promise } from '../func/promise';
 
 
 const ItemsContainer = (props) => {
@@ -20,18 +22,10 @@ const ItemsContainer = (props) => {
     }).then(() => {
       console.log("3番目");
     });
+    call(callback())
+    test_promise(true)
   },[])
 
-  // コールバック関数
-  const call = () => {
-    setTimeout(() => {
-      console.log("こんにちは")
-    }, 1000)
-  }
-  const callback = () => {
-    console.log("誰？？")
-  }
-  call(callback())
 
   return (
     <>
