@@ -42,10 +42,10 @@ const Contact = (props) => {
     })
     .then(res => {
       console.log(res)
-      if(res.status === 204){
-        console.log('204');
+      if(res.status === 200){
+        console.log('status code 200が返ってきたよ。やったね。');
       } else if(res.status === 500){
-        console.log('500');
+        console.log('status code 500が返ってきた。サーバーエラー？');
       }
     })
     .catch(error => {
