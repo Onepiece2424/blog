@@ -26,7 +26,6 @@ const ItemsContainer = (props) => {
     test_promise(true)
   },[])
 
-
   return (
     <>
       <h3>登録した商品一覧</h3>
@@ -37,6 +36,7 @@ const ItemsContainer = (props) => {
       <>
         {itemdata.map((item) =>
           <div key={item.id}>
+            <div>商品ID:{item.id}</div>
             <div >商品：{item.item_name}</div>
             <div>数量：{item.quantity}</div>
           </div>
