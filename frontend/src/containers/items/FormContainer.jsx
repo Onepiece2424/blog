@@ -50,5 +50,5 @@ const FormContainer = (props) => {
 }
 
 export default reduxForm({
-  form: 'FormContainerForm',
+  form: 'ContainerForm',
 })(FormContainer);
