@@ -3,6 +3,8 @@ import axios from 'axios'
 import { reduxForm, Field } from 'redux-form';
 // import showResults from '../func/showResults';
 import { dataTransfer } from '../func/dataTransfer';
+import {useGoogleReCaptcha} from 'react-google-recaptcha-v3';
+
 
 const FormContainer = (props) => {
 
@@ -19,19 +21,22 @@ const FormContainer = (props) => {
     setQuantity(e.target.value)
   }
 
-  const createItem = () => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
-    axios.post('http://localhost:3000/items',
+  const createItem = async() => {
+
+    const token = await executeRecaptcha('create');
+    console.log(token)
+
+    await axios.post('http://localhost:3000/items',
     { item_name: name,
       quantity: quantity,
     })
     .then((response) => {
       console.log(response);
-      window.location.reload();
     })
     .catch((error) =>{
       console.log(error)
-      window.location.reload();
     })
   };
 
