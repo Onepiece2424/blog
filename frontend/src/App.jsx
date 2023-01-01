@@ -10,25 +10,14 @@ import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 // import MainForm from './containers/form/MainForm';
 // import Pointer from './containers/point/Pointer';
 // import AlphaNumeral from './containers/jksonplaceholder_api/AlphaNumeral';
-import MainContainer from './containers/items/MainContainer';
+// import MainContainer from './containers/items/MainContainer';
+import Memo from './containers/custom/Memo';
 
 function App() {
 
   return (
     <GoogleReCaptchaProvider reCaptchaKey={process.env.REACT_APP_S} language="ja">
-      <MainContainer />
-      {/* <Contact /> */}
-      <br></br>
-      <br></br>
-      {/* <Pointer />
-      <MainForm />
-      <Count /> */}
-      {/* <HomeTown />
-      <Reference />
-      <br></br>
-      <br></br>
-      <Edamam />
-      <AlphaNumeral /> */}
+      <Memo />
     </GoogleReCaptchaProvider>
   );
 }
